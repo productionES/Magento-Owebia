@@ -1,0 +1,256 @@
+{
+ "about": {
+ "type": "meta",
+ "about": "Tharpa Spain Shipping prices",
+ "author": "Tharpa Spain",
+ "date": "01/06/2017"
+ },
+ "peso_menor_cuarenta": {
+ "label":"Condición para pesos menor de cuarenta",
+ "conditions": "{cart.weight} <= 40"
+ },
+ "peso_mayor_cuarenta": {
+ "label":"Condición para pesos mayor de cuarenta kilos",
+ "conditions": "{cart.weight} > 40"
+ },
+ "peso_menor_quince": {
+ "label":"Condición para pesos menor de quince",
+ "conditions": "{cart.weight} <= 15"
+ },
+ "peso_mayor_quince": {
+ "label":"Condición para pesos mayor de quince",
+ "conditions": "{cart.weight} > 15"
+ },
+ "peso_menor_cinco": {
+ "label":"Condición para pesos menor de quince",
+ "conditions": "{cart.weight} <= 5"
+ },
+ "peso_mayor_cinco": {
+ "label":"Condición para pesos mayor de quince",
+ "conditions": "{cart.weight} > 5"
+ },
+
+
+
+
+ "lienzo": {
+ "label":"lienzo",
+ "conditions": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:1} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:1} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:1} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:1} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:1} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:1} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:1} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:1} == 0"
+ },
+
+
+
+
+
+
+
+
+ "CORREOS_Envio_sincertificar_a_Peninsula_y_Baleares": {
+ "label": "sin certificar con CORREOS",
+ "shipto": "(ES-(ES(35*) or ES(38*) or ES(51*) or ES(52*)))",
+ "conditions":"{lienzo.conditions}",
+ "fees": "{table {cart.weight} in 0.1:2,0.2:2,0.3:2.1,0.4:2.1,0.5:2.2,0.75:2.6,1:2.9,1.5:2.9,2:3.9}"
+ },
+ "CORREOS_Envio_sincertificar_a_Baleares_Ceuta_Melilla": {
+ "label": "sin certificar con CORREOS",
+ "shipto": "(ES(51*) or ES(52*))",
+ "conditions":"{lienzo.conditions}",
+ "fees": "{table {cart.weight} in 0.1:2,0.2:2,0.3:2.1,0.4:2.1,0.5:2.2,0.75:2.6,1:2.9,1.5:2.9,2:3.9}"
+ },
+ "CORREOS_Envio_sincertificar_a_Canarias": {
+ "label": "sin certificar con CORREOS",
+ "shipto": "(ES(35*) or ES(38*))",
+ "conditions":"{lienzo.conditions}",
+ "fees": "{table {cart.weight} in 0.1:2,0.2:2,0.3:2,0.4:2.1,0.5:2.15,0.75:2.5,1:2.7,1.5:2.9,2:3.6}"
+ },
+
+ "CORREOS_Envio_sincertificar_a_Europa": {
+ "label": "sin certificar con CORREOS",
+ "shipto": "({address_filter.EU}) - (ES)",
+ "conditions":"{lienzo.conditions}",
+ "fees": "{table {cart.weight} in 0.1:2.5,0.2:3.2,0.3:4.3,0.4:4.7,0.5:5,0.75:5.9,1:6.6,1.5:9.10,2:10.20}"
+ },
+
+ "CORREOS_Envio_sincertificar_a_resto_Mundo": {
+ "label": "sin certificar con CORREOS",
+ "shipto": "* - ({address_filter.EU})",
+ "conditions":"{lienzo.conditions}",
+ "fees": "{table {cart.weight} in 0.1:2.6,0.5:10,2:20}"
+ },
+
+
+
+
+
+ "MRW_Envio_certificado_a_Madrid": {
+ "label": "certificado con MRW",
+ "conditions":"{peso_menor_cuarenta.conditions}",
+ "shipto": "ES(28*)",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:7, 0.0002:10.5, 0.0003:15.75, 0.0004:21, 0.0005:26.25, 0.0006:31.5, 0.0007:36.75, 0.0008:42, 0.0009:47.25, 0.001:52.5} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:13, 0.0002:19.5, 0.0003:29.25, 0.0004:39, 0.0005:48.75, 0.0006:58.5, 0.0007:68.25, 0.0008:78, 0.0009:87.75, 0.001:97.5} + {table {cart.weight} in 0.0099:0, 2:4.90, 5:5.90, 10:7.50, 15:9.10, 20:10.70, 25:12.30, 30:13.90, 35:15.60, 40:17.20}"
+ },
+ "MRW_Envio_certificado_a_cerca_Madrid": {
+ "about": "Envios certificados a Segovia, Ávila, Cuenca. Toledo o Guadalajara con la empresa MRW",
+ "label": "certificado con MRW",
+ "conditions":"{peso_menor_cuarenta.conditions}",
+ "shipto": "(ES(40*) or ES(05*) or ES(16*) or ES(45*) or ES(19*))",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:7, 0.0002:10.5, 0.0003:15.75, 0.0004:21, 0.0005:26.25, 0.0006:31.5, 0.0007:36.75, 0.0008:42, 0.0009:47.25, 0.001:52.5} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:13, 0.0002:19.5, 0.0003:29.25, 0.0004:39, 0.0005:48.75, 0.0006:58.5, 0.0007:68.25, 0.0008:78, 0.0009:87.75, 0.001:97.5} + {table {cart.weight} in 0.0099:0, 2:5.60, 5:6.10, 10:7.90, 15:9.70, 20:11.30, 25:12.90, 30:15.30, 35:18.20, 40:21.80}"
+ },
+ "CORREOS_Envio_certificado_a_Baleares_Ceuta_Melilla": {
+ "label": "certificado con CORREOS",
+ "conditions":"{peso_menor_quince.conditions}",
+ "shipto": "(ES(07*) or ES(51*) or ES(52*))",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:14, 0.0002:21, 0.0003:31.5, 0.0004:42, 0.0005:52.5, 0.0006:63, 0.0007:73.5, 0.0008:84, 0.0009:94.5, 0.001:105} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:16, 0.0002:24, 0.0003:36, 0.0004:48, 0.0005:60, 0.0006:72, 0.0007:84, 0.0008:96, 0.0009:108, 0.001:120} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:28, 0.0002:42, 0.0003:63, 0.0004:84, 0.0005:105, 0.0006:126, 0.0007:147, 0.0008:168, 0.0009:189, 0.001:210} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:18, 0.0002:27, 0.0003:40.5, 0.0004:54, 0.0005:67.5, 0.0006:81, 0.0007:94.5, 0.0008:108, 0.0009:121.5, 0.001:135} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:28, 0.0002:42, 0.0003:63, 0.0004:84, 0.0005:105, 0.0006:126, 0.0007:147, 0.0008:168, 0.0009:189, 0.001:210} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:28, 0.0002:42, 0.0003:63, 0.0004:84, 0.0005:105, 0.0006:126, 0.0007:147, 0.0008:168, 0.0009:189, 0.001:210} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:38, 0.0002:57, 0.0003:85.5, 0.0004:114, 0.0005:142.5, 0.0006:171, 0.0007:199.5, 0.0008:228, 0.0009:256.5, 0.001:285} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:127, 0.0002:190.5, 0.0003:285.75, 0.0004:381, 0.0005:476.25, 0.0006:571.5, 0.0007:666.75, 0.0008:762, 0.0009:857.25, 0.001:952.5} + {table {cart.weight} in 0.0099:0, 1:9.90, 2:10.60, 3:11.00, 4:12.40, 5:13.80, 10:20.80, 15:27.80}"
+ },
+ "CORREOS_Envio_certificado_a_Canarias": {
+ "label": "certificado con CORREOS",
+ "conditions":"{peso_menor_quince.conditions}",
+ "shipto": "(ES(35*) or ES(38*))",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:23, 0.0002:34.5, 0.0003:51.75, 0.0004:69, 0.0005:86.25, 0.0006:103.5, 0.0007:120.75, 0.0008:138, 0.0009:155.25, 0.001:172.5} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:24, 0.0002:36, 0.0003:54, 0.0004:72, 0.0005:90, 0.0006:108, 0.0007:126, 0.0008:144, 0.0009:162, 0.001:180} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:31, 0.0002:46.5, 0.0003:69.75, 0.0004:93, 0.0005:116.25, 0.0006:139.5, 0.0007:162.75, 0.0008:186, 0.0009:209.25, 0.001:232.5} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:24, 0.0002:36, 0.0003:54, 0.0004:72, 0.0005:90, 0.0006:108, 0.0007:126, 0.0008:144, 0.0009:162, 0.001:180} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:31, 0.0002:46.5, 0.0003:69.75, 0.0004:93, 0.0005:116.25, 0.0006:139.5, 0.0007:162.75, 0.0008:186, 0.0009:209.25, 0.001:232.5} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:30, 0.0002:45, 0.0003:67.5, 0.0004:90, 0.0005:112.5, 0.0006:135, 0.0007:157.5, 0.0008:180, 0.0009:202.5, 0.001:225} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:40, 0.0002:60, 0.0003:90, 0.0004:120, 0.0005:150, 0.0006:180, 0.0007:210, 0.0008:240, 0.0009:270, 0.001:300} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:140, 0.0002:210, 0.0003:315, 0.0004:420, 0.0005:525, 0.0006:630, 0.0007:735, 0.0008:840, 0.0009:945, 0.001:1050} + {table {cart.weight} in 0.0099:0, 1:14.30, 2:14.70, 3:18.40, 4:19.10, 5:20.50, 10:24.90, 15:32.10}"
+ },
+ "MRW_Envio_certificado_a_Espania": {
+ "about": "Envios certificados a la Península  con la empresa MRW",
+ "label": "certificado con MRW",
+ "conditions":"{peso_menor_cuarenta.conditions}",
+ "shipto": "(ES-(ES(28*) or ES(40*) or ES(05*) or ES(16*) or ES(45*) or ES(19*) or ES(07*) or ES(51*) or ES(52*) or ES(35*) or ES(38*)))",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:7, 0.0002:10.5, 0.0003:15.75, 0.0004:21, 0.0005:26.25, 0.0006:31.5, 0.0007:36.75, 0.0008:42, 0.0009:47.25, 0.001:52.5} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:13, 0.0002:19.5, 0.0003:29.25, 0.0004:39, 0.0005:48.75, 0.0006:58.5, 0.0007:68.25, 0.0008:78, 0.0009:87.75, 0.001:97.5} + {table {cart.weight} in 0.0099:0, 2:6.50, 5:6.80, 10:8.60, 15:10.30, 20:12.10, 25:13.90, 30:16.20, 35:19.20, 40:22.80}"
+ },
+ "CORREOS_Envio_certificado_a_Europa": {
+ "label": "certificado con CORREOS",
+ "shipto": "({address_filter.EU}) - (ES)",
+ "conditions":"{peso_menor_cinco.conditions}",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:50, 0.0002:75, 0.0003:112.5, 0.0004:150, 0.0005:187.5, 0.0006:225, 0.0007:262.5, 0.0008:300, 0.0009:337.5, 0.001:375} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:65, 0.0002:97.5, 0.0003:146.25, 0.0004:195, 0.0005:243.75, 0.0006:292.5, 0.0007:341.25, 0.0008:390, 0.0009:438.75, 0.001:487.5} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:70, 0.0002:105, 0.0003:157.5, 0.0004:210, 0.0005:262.5, 0.0006:315, 0.0007:367.5, 0.0008:420, 0.0009:472.5, 0.001:525} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:65, 0.0002:97.5, 0.0003:146.25, 0.0004:195, 0.0005:243.75, 0.0006:292.5, 0.0007:341.25, 0.0008:390, 0.0009:438.75, 0.001:487.5} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:85, 0.0002:127.5, 0.0003:191.25, 0.0004:255, 0.0005:318.75, 0.0006:382.5, 0.0007:446.25, 0.0008:510, 0.0009:573.75, 0.001:637.5} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:85, 0.0002:127.5, 0.0003:191.25, 0.0004:255, 0.0005:318.75, 0.0006:382.5, 0.0007:446.25, 0.0008:510, 0.0009:573.75, 0.001:637.5} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:110, 0.0002:165, 0.0003:247.5, 0.0004:330, 0.0005:412.5, 0.0006:495, 0.0007:577.5, 0.0008:660, 0.0009:742.5, 0.001:825} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:135, 0.0002:202.5, 0.0003:303.75, 0.0004:405, 0.0005:506.25, 0.0006:607.5, 0.0007:708.75, 0.0008:810, 0.0009:911.25, 0.001:1012.5} + {table {cart.weight} in 0.0099:0, 1:21.80, 2:24, 3:26.2, 4:28.4, 5:30.6}"
+ },
+ "CORREOS_Envio_certificado_a_America": {
+ "label": "certificado con CORREOS",
+ "shipto": "{address_filter.NA},{address_filter.SA}",
+ "conditions":"{peso_menor_cinco.conditions}",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:105, 0.0002:157.5, 0.0003:236.25, 0.0004:315, 0.0005:393.75, 0.0006:472.5, 0.0007:551.25, 0.0008:630, 0.0009:708.75, 0.001:787.5} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:135, 0.0002:202.5, 0.0003:303.75, 0.0004:405, 0.0005:506.25, 0.0006:607.5, 0.0007:708.75, 0.0008:810, 0.0009:911.25, 0.001:1012.5} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:200, 0.0002:300, 0.0003:450, 0.0004:600, 0.0005:750, 0.0006:900, 0.0007:1050, 0.0008:1200, 0.0009:1350, 0.001:1500} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:135, 0.0002:202.5, 0.0003:303.75, 0.0004:405, 0.0005:506.25, 0.0006:607.5, 0.0007:708.75, 0.0008:810, 0.0009:911.25, 0.001:1012.5} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:190, 0.0002:285, 0.0003:427.5, 0.0004:570, 0.0005:712.5, 0.0006:855, 0.0007:997.5, 0.0008:1140, 0.0009:1282.5, 0.001:1425} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:190, 0.0002:285, 0.0003:427.5, 0.0004:570, 0.0005:712.5, 0.0006:855, 0.0007:997.5, 0.0008:1140, 0.0009:1282.5, 0.001:1425} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:220, 0.0002:330, 0.0003:495, 0.0004:660, 0.0005:825, 0.0006:990, 0.0007:1155, 0.0008:1320, 0.0009:1485, 0.001:1650} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:250, 0.0002:375, 0.0003:562.5, 0.0004:750, 0.0005:937.5, 0.0006:1125, 0.0007:1312.5, 0.0008:1500, 0.0009:1687.5, 0.001:1875} + {table {cart.weight} in 0.0099:0, 1:18.30, 2:22.10, 3:26.00, 4:29.9, 5:33.7}"
+ },
+ "CORREOS_Envio_certificado_a_resto_Mundo": {
+ "label": "certificado con CORREOS",
+ "shipto": "* - ({address_filter.EU},{address_filter.NA},{address_filter.SA})",
+ "conditions":"{peso_menor_cinco.conditions}",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:105, 0.0002:157.5, 0.0003:236.25, 0.0004:315, 0.0005:393.75, 0.0006:472.5, 0.0007:551.25, 0.0008:630, 0.0009:708.75, 0.001:787.5} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:135, 0.0002:202.5, 0.0003:303.75, 0.0004:405, 0.0005:506.25, 0.0006:607.5, 0.0007:708.75, 0.0008:810, 0.0009:911.25, 0.001:1012.5} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:200, 0.0002:300, 0.0003:450, 0.0004:600, 0.0005:750, 0.0006:900, 0.0007:1050, 0.0008:1200, 0.0009:1350, 0.001:1500} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:135, 0.0002:202.5, 0.0003:303.75, 0.0004:405, 0.0005:506.25, 0.0006:607.5, 0.0007:708.75, 0.0008:810, 0.0009:911.25, 0.001:1012.5} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:190, 0.0002:285, 0.0003:427.5, 0.0004:570, 0.0005:712.5, 0.0006:855, 0.0007:997.5, 0.0008:1140, 0.0009:1282.5, 0.001:1425} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:190, 0.0002:285, 0.0003:427.5, 0.0004:570, 0.0005:712.5, 0.0006:855, 0.0007:997.5, 0.0008:1140, 0.0009:1282.5, 0.001:1425} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:220, 0.0002:330, 0.0003:495, 0.0004:660, 0.0005:825, 0.0006:990, 0.0007:1155, 0.0008:1320, 0.0009:1485, 0.001:1650} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:250, 0.0002:375, 0.0003:562.5, 0.0004:750, 0.0005:937.5, 0.0006:1125, 0.0007:1312.5, 0.0008:1500, 0.0009:1687.5, 0.001:1875} + {table {cart.weight} in 0.0099:0, 1:17.50, 2:21.10, 3:24.70, 4:28.4, 5:32.00}"
+ },
+
+
+
+
+
+ "CENTROS_MUNDO": {
+ "label":"La Editorial buscará la mejor tarifa para usted y la añadiremos su factura posteriormente",
+ "customer_groups": "9,30,37",
+ "fees": 0
+ },
+
+
+
+
+
+ "CENTROS_SPANIA": {
+ "label":"CENTROS_SPANIA",
+ "conditions": "{cart.price-tax+discount} >= 100"
+ },
+
+
+
+
+
+ "MRW_Envio_certificado_a_Madrid_CENTROS_SPANIA": {
+ "label": "certificado con MRW",
+ "conditions":"{CENTROS_SPANIA.conditions}",
+ "shipto": "ES(28*)",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:7, 0.0002:10.5, 0.0003:15.75, 0.0004:21, 0.0005:26.25, 0.0006:31.5, 0.0007:36.75, 0.0008:42, 0.0009:47.25, 0.001:52.5} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:13, 0.0002:19.5, 0.0003:29.25, 0.0004:39, 0.0005:48.75, 0.0006:58.5, 0.0007:68.25, 0.0008:78, 0.0009:87.75, 0.001:97.5}",
+ "customer_groups": "11,36"
+ },
+ "MRW_Envio_certificado_a_cerca_Madrid_CENTROS_SPANIA": {
+ "about": "Envios certificados a Segovia, Ávila, Cuenca. Toledo o Guadalajara con la empresa MRW",
+ "label": "certificado con MRW",
+ "conditions":"{CENTROS_SPANIA.conditions}",
+ "shipto": "(ES(40*) or ES(05*) or ES(16*) or ES(45*) or ES(19*))",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:7, 0.0002:10.5, 0.0003:15.75, 0.0004:21, 0.0005:26.25, 0.0006:31.5, 0.0007:36.75, 0.0008:42, 0.0009:47.25, 0.001:52.5} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:13, 0.0002:19.5, 0.0003:29.25, 0.0004:39, 0.0005:48.75, 0.0006:58.5, 0.0007:68.25, 0.0008:78, 0.0009:87.75, 0.001:97.5}",
+ "customer_groups": "11,36"
+ },
+ "CORREOS_Envio_certificado_a_Baleares_Ceuta_Melilla_CENTROS_SPANIA": {
+ "label": "certificado con CORREOS",
+ "conditions":"{CENTROS_SPANIA.conditions}",
+ "shipto": "(ES(07*) or ES(51*) or ES(52*))",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:14, 0.0002:21, 0.0003:31.5, 0.0004:42, 0.0005:52.5, 0.0006:63, 0.0007:73.5, 0.0008:84, 0.0009:94.5, 0.001:105} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:16, 0.0002:24, 0.0003:36, 0.0004:48, 0.0005:60, 0.0006:72, 0.0007:84, 0.0008:96, 0.0009:108, 0.001:120} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:28, 0.0002:42, 0.0003:63, 0.0004:84, 0.0005:105, 0.0006:126, 0.0007:147, 0.0008:168, 0.0009:189, 0.001:210} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:18, 0.0002:27, 0.0003:40.5, 0.0004:54, 0.0005:67.5, 0.0006:81, 0.0007:94.5, 0.0008:108, 0.0009:121.5, 0.001:135} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:28, 0.0002:42, 0.0003:63, 0.0004:84, 0.0005:105, 0.0006:126, 0.0007:147, 0.0008:168, 0.0009:189, 0.001:210} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:28, 0.0002:42, 0.0003:63, 0.0004:84, 0.0005:105, 0.0006:126, 0.0007:147, 0.0008:168, 0.0009:189, 0.001:210} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:38, 0.0002:57, 0.0003:85.5, 0.0004:114, 0.0005:142.5, 0.0006:171, 0.0007:199.5, 0.0008:228, 0.0009:256.5, 0.001:285} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:127, 0.0002:190.5, 0.0003:285.75, 0.0004:381, 0.0005:476.25, 0.0006:571.5, 0.0007:666.75, 0.0008:762, 0.0009:857.25, 0.001:952.5}",
+ "customer_groups": "11,36"
+ },
+ "CORREOS_Envio_certificado_a_Canarias_CENTROS_SPANIA": {
+ "label": "certificado con CORREOS",
+ "conditions":"{CENTROS_SPANIA.conditions}",
+ "shipto": "(ES(35*) or ES(38*))",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:23, 0.0002:34.5, 0.0003:51.75, 0.0004:69, 0.0005:86.25, 0.0006:103.5, 0.0007:120.75, 0.0008:138, 0.0009:155.25, 0.001:172.5} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:24, 0.0002:36, 0.0003:54, 0.0004:72, 0.0005:90, 0.0006:108, 0.0007:126, 0.0008:144, 0.0009:162, 0.001:180} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:31, 0.0002:46.5, 0.0003:69.75, 0.0004:93, 0.0005:116.25, 0.0006:139.5, 0.0007:162.75, 0.0008:186, 0.0009:209.25, 0.001:232.5} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:24, 0.0002:36, 0.0003:54, 0.0004:72, 0.0005:90, 0.0006:108, 0.0007:126, 0.0008:144, 0.0009:162, 0.001:180} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:31, 0.0002:46.5, 0.0003:69.75, 0.0004:93, 0.0005:116.25, 0.0006:139.5, 0.0007:162.75, 0.0008:186, 0.0009:209.25, 0.001:232.5} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:30, 0.0002:45, 0.0003:67.5, 0.0004:90, 0.0005:112.5, 0.0006:135, 0.0007:157.5, 0.0008:180, 0.0009:202.5, 0.001:225} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:40, 0.0002:60, 0.0003:90, 0.0004:120, 0.0005:150, 0.0006:180, 0.0007:210, 0.0008:240, 0.0009:270, 0.001:300} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:140, 0.0002:210, 0.0003:315, 0.0004:420, 0.0005:525, 0.0006:630, 0.0007:735, 0.0008:840, 0.0009:945, 0.001:1050}",
+ "customer_groups": "11,36"
+ },
+ "MRW_Envio_certificado_a_Espania_CENTROS_SPANIA": {
+ "about": "Envios certificados a la Península  con la empresa MRW",
+ "label": "certificado con MRW",
+ "conditions":"{CENTROS_SPANIA.conditions}",
+ "shipto": "(ES-(ES(28*) or ES(40*) or ES(05*) or ES(16*) or ES(45*) or ES(19*) or ES(07*) or ES(51*) or ES(52*) or ES(35*) or ES(38*)))",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:7, 0.0002:10.5, 0.0003:15.75, 0.0004:21, 0.0005:26.25, 0.0006:31.5, 0.0007:36.75, 0.0008:42, 0.0009:47.25, 0.001:52.5} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:13, 0.0002:19.5, 0.0003:29.25, 0.0004:39, 0.0005:48.75, 0.0006:58.5, 0.0007:68.25, 0.0008:78, 0.0009:87.75, 0.001:97.5}",
+ "customer_groups": "11,36"
+ },
+
+
+
+
+
+
+
+
+
+
+ "CORREOS_Envio_certificado_a_Madrid_sobrepeso": {
+ "label": "certificado con CORREOS",
+ "conditions":"{peso_mayor_cuarenta.conditions}",
+ "shipto": "ES(28*)",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:7, 0.0002:10.5, 0.0003:15.75, 0.0004:21, 0.0005:26.25, 0.0006:31.5, 0.0007:36.75, 0.0008:42, 0.0009:47.25, 0.001:52.5} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:13, 0.0002:19.5, 0.0003:29.25, 0.0004:39, 0.0005:48.75, 0.0006:58.5, 0.0007:68.25, 0.0008:78, 0.0009:87.75, 0.001:97.5} + (10+ceil({cart.weight}- 15)*0.32)"
+ },
+ "CORREOS_Envio_certificado_a_cerca_Madrid_sobrepeso": {
+ "about": "Envios certificados a Segovia, Ávila, Cuenca. Toledo o Guadalajara con Correos",
+ "label": "certificado con CORREOS",
+ "conditions":"{peso_mayor_cuarenta.conditions}",
+ "shipto": "(ES(40*) or ES(05*) or ES(16*) or ES(45*) or ES(19*))",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:7, 0.0002:10.5, 0.0003:15.75, 0.0004:21, 0.0005:26.25, 0.0006:31.5, 0.0007:36.75, 0.0008:42, 0.0009:47.25, 0.001:52.5} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:13, 0.0002:19.5, 0.0003:29.25, 0.0004:39, 0.0005:48.75, 0.0006:58.5, 0.0007:68.25, 0.0008:78, 0.0009:87.75, 0.001:97.5} + (14.35+ceil({cart.weight}- 15)*0.58)"
+ },
+ "CORREOS_Envio_certificado_a_Baleares_Ceuta_Melilla_sobrepeso": {
+ "label": "certificado con CORREOS",
+ "conditions":"{peso_mayor_quince.conditions}",
+ "shipto": "(ES(07*) or ES(51*) or ES(52*))",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:14, 0.0002:21, 0.0003:31.5, 0.0004:42, 0.0005:52.5, 0.0006:63, 0.0007:73.5, 0.0008:84, 0.0009:94.5, 0.001:105} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:16, 0.0002:24, 0.0003:36, 0.0004:48, 0.0005:60, 0.0006:72, 0.0007:84, 0.0008:96, 0.0009:108, 0.001:120} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:28, 0.0002:42, 0.0003:63, 0.0004:84, 0.0005:105, 0.0006:126, 0.0007:147, 0.0008:168, 0.0009:189, 0.001:210} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:18, 0.0002:27, 0.0003:40.5, 0.0004:54, 0.0005:67.5, 0.0006:81, 0.0007:94.5, 0.0008:108, 0.0009:121.5, 0.001:135} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:28, 0.0002:42, 0.0003:63, 0.0004:84, 0.0005:105, 0.0006:126, 0.0007:147, 0.0008:168, 0.0009:189, 0.001:210} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:28, 0.0002:42, 0.0003:63, 0.0004:84, 0.0005:105, 0.0006:126, 0.0007:147, 0.0008:168, 0.0009:189, 0.001:210} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:38, 0.0002:57, 0.0003:85.5, 0.0004:114, 0.0005:142.5, 0.0006:171, 0.0007:199.5, 0.0008:228, 0.0009:256.5, 0.001:285} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:127, 0.0002:190.5, 0.0003:285.75, 0.0004:381, 0.0005:476.25, 0.0006:571.5, 0.0007:666.75, 0.0008:762, 0.0009:857.25, 0.001:952.5} + (27.8+ceil({cart.weight}- 15)*1.44)"
+ },
+ "CORREOS_Envio_certificado_a_Canarias_sobrepeso": {
+ "label": "certificado con CORREOS",
+ "conditions":"{peso_mayor_quince.conditions}",
+ "shipto": "(ES(35*) or ES(38*))",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:23, 0.0002:34.5, 0.0003:51.75, 0.0004:69, 0.0005:86.25, 0.0006:103.5, 0.0007:120.75, 0.0008:138, 0.0009:155.25, 0.001:172.5} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:24, 0.0002:36, 0.0003:54, 0.0004:72, 0.0005:90, 0.0006:108, 0.0007:126, 0.0008:144, 0.0009:162, 0.001:180} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:31, 0.0002:46.5, 0.0003:69.75, 0.0004:93, 0.0005:116.25, 0.0006:139.5, 0.0007:162.75, 0.0008:186, 0.0009:209.25, 0.001:232.5} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:24, 0.0002:36, 0.0003:54, 0.0004:72, 0.0005:90, 0.0006:108, 0.0007:126, 0.0008:144, 0.0009:162, 0.001:180} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:31, 0.0002:46.5, 0.0003:69.75, 0.0004:93, 0.0005:116.25, 0.0006:139.5, 0.0007:162.75, 0.0008:186, 0.0009:209.25, 0.001:232.5} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:30, 0.0002:45, 0.0003:67.5, 0.0004:90, 0.0005:112.5, 0.0006:135, 0.0007:157.5, 0.0008:180, 0.0009:202.5, 0.001:225} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:40, 0.0002:60, 0.0003:90, 0.0004:120, 0.0005:150, 0.0006:180, 0.0007:210, 0.0008:240, 0.0009:270, 0.001:300} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:140, 0.0002:210, 0.0003:315, 0.0004:420, 0.0005:525, 0.0006:630, 0.0007:735, 0.0008:840, 0.0009:945, 0.001:1050} + (32.10+ceil({cart.weight}- 15)*2.39)"
+ },
+ "CORREOS_Envio_certificado_a_Espania_sobrepeso": {
+ "about": "Envios certificados a la Península con Correos",
+ "label": "certificado con CORREOS",
+ "conditions":"{peso_mayor_cuarenta.conditions}",
+ "shipto": "(ES-(ES(28*) or ES(40*) or ES(05*) or ES(16*) or ES(45*) or ES(19*) or ES(07*) or ES(51*) or ES(52*) or ES(35*) or ES(38*)))",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:7, 0.0002:10.5, 0.0003:15.75, 0.0004:21, 0.0005:26.25, 0.0006:31.5, 0.0007:36.75, 0.0008:42, 0.0009:47.25, 0.001:52.5} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:9, 0.0002:13.5, 0.0003:20.25, 0.0004:27, 0.0005:33.75, 0.0006:40.5, 0.0007:47.25, 0.0008:54, 0.0009:60.75, 0.001:67.5} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:11, 0.0002:16.5, 0.0003:24.75, 0.0004:33, 0.0005:41.25, 0.0006:49.5, 0.0007:57.75, 0.0008:66, 0.0009:74.25, 0.001:82.5} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:13, 0.0002:19.5, 0.0003:29.25, 0.0004:39, 0.0005:48.75, 0.0006:58.5, 0.0007:68.25, 0.0008:78, 0.0009:87.75, 0.001:97.5} + (15.12+ceil({cart.weight}- 15)*0.70)"
+ },
+ "CORREOS_Envio_certificado_a_Europa_sobrepeso": {
+ "label": "certificado con CORREOS",
+ "shipto": "({address_filter.EU}) - (ES)",
+ "conditions":"{peso_mayor_cinco.conditions}",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:50, 0.0002:75, 0.0003:112.5, 0.0004:150, 0.0005:187.5, 0.0006:225, 0.0007:262.5, 0.0008:300, 0.0009:337.5, 0.001:375} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:65, 0.0002:97.5, 0.0003:146.25, 0.0004:195, 0.0005:243.75, 0.0006:292.5, 0.0007:341.25, 0.0008:390, 0.0009:438.75, 0.001:487.5} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:70, 0.0002:105, 0.0003:157.5, 0.0004:210, 0.0005:262.5, 0.0006:315, 0.0007:367.5, 0.0008:420, 0.0009:472.5, 0.001:525} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:65, 0.0002:97.5, 0.0003:146.25, 0.0004:195, 0.0005:243.75, 0.0006:292.5, 0.0007:341.25, 0.0008:390, 0.0009:438.75, 0.001:487.5} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:85, 0.0002:127.5, 0.0003:191.25, 0.0004:255, 0.0005:318.75, 0.0006:382.5, 0.0007:446.25, 0.0008:510, 0.0009:573.75, 0.001:637.5} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:85, 0.0002:127.5, 0.0003:191.25, 0.0004:255, 0.0005:318.75, 0.0006:382.5, 0.0007:446.25, 0.0008:510, 0.0009:573.75, 0.001:637.5} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:110, 0.0002:165, 0.0003:247.5, 0.0004:330, 0.0005:412.5, 0.0006:495, 0.0007:577.5, 0.0008:660, 0.0009:742.5, 0.001:825} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:135, 0.0002:202.5, 0.0003:303.75, 0.0004:405, 0.0005:506.25, 0.0006:607.5, 0.0007:708.75, 0.0008:810, 0.0009:911.25, 0.001:1012.5} + (30.6+ceil({cart.weight}- 5)*3.21)"
+ },
+ "CORREOS_Envio_certificado_a_America_sobrepeso": {
+ "label": "certificado con CORREOS",
+ "shipto": "{address_filter.NA},{address_filter.SA}",
+ "conditions":"{peso_mayor_cinco.conditions}",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:105, 0.0002:157.5, 0.0003:236.25, 0.0004:315, 0.0005:393.75, 0.0006:472.5, 0.0007:551.25, 0.0008:630, 0.0009:708.75, 0.001:787.5} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:135, 0.0002:202.5, 0.0003:303.75, 0.0004:405, 0.0005:506.25, 0.0006:607.5, 0.0007:708.75, 0.0008:810, 0.0009:911.25, 0.001:1012.5} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:200, 0.0002:300, 0.0003:450, 0.0004:600, 0.0005:750, 0.0006:900, 0.0007:1050, 0.0008:1200, 0.0009:1350, 0.001:1500} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:135, 0.0002:202.5, 0.0003:303.75, 0.0004:405, 0.0005:506.25, 0.0006:607.5, 0.0007:708.75, 0.0008:810, 0.0009:911.25, 0.001:1012.5} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:190, 0.0002:285, 0.0003:427.5, 0.0004:570, 0.0005:712.5, 0.0006:855, 0.0007:997.5, 0.0008:1140, 0.0009:1282.5, 0.001:1425} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:190, 0.0002:285, 0.0003:427.5, 0.0004:570, 0.0005:712.5, 0.0006:855, 0.0007:997.5, 0.0008:1140, 0.0009:1282.5, 0.001:1425} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:220, 0.0002:330, 0.0003:495, 0.0004:660, 0.0005:825, 0.0006:990, 0.0007:1155, 0.0008:1320, 0.0009:1485, 0.001:1650} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:250, 0.0002:375, 0.0003:562.5, 0.0004:750, 0.0005:937.5, 0.0006:1125, 0.0007:1312.5, 0.0008:1500, 0.0009:1687.5, 0.001:1875} + (33.70+ceil({cart.weight}- 5)*4.87)"
+ },
+ "CORREOS_Envio_certificado_a_resto_Mundo_sobrepeso": {
+ "label": "certificado con CORREOS",
+ "shipto": "* - ({address_filter.EU},{address_filter.NA},{address_filter.SA})",
+ "conditions":"{peso_mayor_cinco.conditions}",
+ "fees": "{table {sum product.weight where array_match_any(product.categories.id, array(786))} in 0:0, 0.0001:105, 0.0002:157.5, 0.0003:236.25, 0.0004:315, 0.0005:393.75, 0.0006:472.5, 0.0007:551.25, 0.0008:630, 0.0009:708.75, 0.001:787.5} + {table {sum product.weight where array_match_any(product.categories.id, array(787))} in 0:0, 0.0001:135, 0.0002:202.5, 0.0003:303.75, 0.0004:405, 0.0005:506.25, 0.0006:607.5, 0.0007:708.75, 0.0008:810, 0.0009:911.25, 0.001:1012.5} + {table {sum product.weight where array_match_any(product.categories.id, array(788))} in 0:0, 0.0001:200, 0.0002:300, 0.0003:450, 0.0004:600, 0.0005:750, 0.0006:900, 0.0007:1050, 0.0008:1200, 0.0009:1350, 0.001:1500} + {table {sum product.weight where array_match_any(product.categories.id, array(789))} in 0:0, 0.0001:135, 0.0002:202.5, 0.0003:303.75, 0.0004:405, 0.0005:506.25, 0.0006:607.5, 0.0007:708.75, 0.0008:810, 0.0009:911.25, 0.001:1012.5} + {table {sum product.weight where array_match_any(product.categories.id, array(790))} in 0:0, 0.0001:190, 0.0002:285, 0.0003:427.5, 0.0004:570, 0.0005:712.5, 0.0006:855, 0.0007:997.5, 0.0008:1140, 0.0009:1282.5, 0.001:1425} + {table {sum product.weight where array_match_any(product.categories.id, array(791))} in 0:0, 0.0001:190, 0.0002:285, 0.0003:427.5, 0.0004:570, 0.0005:712.5, 0.0006:855, 0.0007:997.5, 0.0008:1140, 0.0009:1282.5, 0.001:1425} + {table {sum product.weight where array_match_any(product.categories.id, array(792))} in 0:0, 0.0001:220, 0.0002:330, 0.0003:495, 0.0004:660, 0.0005:825, 0.0006:990, 0.0007:1155, 0.0008:1320, 0.0009:1485, 0.001:1650} + {table {sum product.weight where array_match_any(product.categories.id, array(793))} in 0:0, 0.0001:250, 0.0002:375, 0.0003:562.5, 0.0004:750, 0.0005:937.5, 0.0006:1125, 0.0007:1312.5, 0.0008:1500, 0.0009:1687.5, 0.001:1875} + (33.70+ceil({cart.weight}- 5)*4.87)"
+ }
+}
